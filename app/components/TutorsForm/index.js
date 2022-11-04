@@ -121,10 +121,11 @@ function TutorsForm(props) {
               initialValues={{
                 phone_code: 91,
                 already_tutor_somewhere_else: false,
+                script: 'Script1',
                 // add_bank_details: props.addBankDetails,
               }}
               autoComplete="off"
-              // onFinish={props.handleSubmit}
+              onFinish={values => console.log(values)}
             >
               <Form.Item
                 label="Choose Your Script"
@@ -184,7 +185,7 @@ function TutorsForm(props) {
                   <Form.Item
                     label="Number of Fibres"
                     placeholder="Number of Fibres"
-                    name="height"
+                    name="num_fibres"
                     rules={[
                       { required: true, message: 'This field is required' },
                     ]}
@@ -194,7 +195,7 @@ function TutorsForm(props) {
                   <Form.Item
                     label="Matrix Youngs Modulus"
                     placeholder="Matrix Youngs Modulus"
-                    name="height"
+                    name="matrix_youngs_modulus"
                     rules={[
                       { required: true, message: 'This field is required' },
                     ]}
@@ -204,7 +205,7 @@ function TutorsForm(props) {
                   <Form.Item
                     label="Matrix Poisson's Ratio"
                     placeholder="Matrix Poisson's Ratio"
-                    name="height"
+                    name="matrix_poissons_ratio"
                     rules={[
                       { required: true, message: 'This field is required' },
                     ]}
@@ -214,7 +215,7 @@ function TutorsForm(props) {
                   <Form.Item
                     label="Fibre Youngs Modulus"
                     placeholder="Fibre Youngs Modulus"
-                    name="height"
+                    name="fibre_young_modulus"
                     rules={[
                       { required: true, message: 'This field is required' },
                     ]}
@@ -224,7 +225,7 @@ function TutorsForm(props) {
                   <Form.Item
                     label="Fibre Poisson's Ratio"
                     placeholder="Fibre Poisson's Ratio"
-                    name="height"
+                    name="fibre_poissons_ratio"
                     rules={[
                       { required: true, message: 'This field is required' },
                     ]}
@@ -232,8 +233,14 @@ function TutorsForm(props) {
                     <InputNumber style={{ width: '100%' }} />
                   </Form.Item>
                   <Form.Item justify="right">
-                    <Button style={{ backgroundColor: 'blue', color: '#fff' }}>
-                      Download Python Script
+                    <Button
+                      style={{ backgroundColor: 'blue', color: '#fff' }}
+                      htmlType="submit"
+                      // onClick={}
+                    >
+                      <a href="app/images/file.py" download="myfile.py">
+                        Download Python Script
+                      </a>
                     </Button>
                   </Form.Item>
                 </div>

@@ -18,7 +18,9 @@ import reducer from './reducer';
 import saga from './saga';
 import TutorsForm from '../../components/TutorsForm';
 
-export function MainPage() {
+import { runScriptStart } from './actions';
+
+export function MainPage(props) {
   useInjectReducer({ key: 'mainPage', reducer });
   useInjectSaga({ key: 'mainPage', saga });
 
@@ -28,7 +30,7 @@ export function MainPage() {
         <title>MainPage</title>
         <meta name="description" content="Description of MainPage" />
       </Helmet>
-      <TutorsForm />
+      <TutorsForm run={props.runScript} />
     </div>
   );
 }
@@ -38,12 +40,12 @@ MainPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  mainPage: makeSelectMainPage(),
+  state: makeSelectMainPage(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    runScript: payload => dispatch(runScriptStart(payload)),
   };
 }
 
